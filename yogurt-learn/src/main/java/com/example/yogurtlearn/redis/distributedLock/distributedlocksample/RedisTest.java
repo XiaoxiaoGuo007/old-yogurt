@@ -36,7 +36,7 @@ public class RedisTest {
      * @Param: [key, value]
      * @return: java.lang.Long
      */
-    public Long distributedLock(String key,String value){
+    public Long distributedLockNX(String key,String value){
         Jedis jedis = null;
         try{
             jedis = jedisPool.getResource();
@@ -51,6 +51,11 @@ public class RedisTest {
     /**
      * @Author: old_yogurt
      * @Description:
+     *      这种带过期时间的锁，可以保证，不论是正常执行代码，还是抛了异常，锁都可以别释放；
+     *      但是又会引发另外一个问题：
+     *          1.设置的过期时间太短，一个线程获取锁之后执行业务逻辑，可能会出现业务逻辑还没有走完，所就被释放了。
+     *            导致其他线程也会拿到锁执行业务逻辑
+     *          2.设计的过期时间太长，就会导致并发能力降低
      * @Param: [key, value, time, unit]
      * @return: java.lang.String
      */
@@ -82,7 +87,7 @@ public class RedisTest {
     }
 
     public void testLock2(){
-        Long lock = distributedLock("lockWithExpireTime", "1");
+        Long lock = distributedLockNX("lockWithExpireTime", "1");
         System.out.println(lock);
     }
 
@@ -125,6 +130,4 @@ public class RedisTest {
             jedisPool.returnResource(jedis);
         }
     }
-
-
 }
