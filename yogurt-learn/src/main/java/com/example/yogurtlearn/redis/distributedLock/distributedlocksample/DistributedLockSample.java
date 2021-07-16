@@ -48,7 +48,6 @@ public class DistributedLockSample {
     static CountDownLatch latch = new CountDownLatch(5);
 
     public void testDistributedLockSample() {
-
         for (int i = 0; i < 5; i++) {
             Thread thread = new Thread(){
                 @Override
