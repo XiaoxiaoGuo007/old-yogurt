@@ -2,6 +2,10 @@ package com.example.yogurtlearn.util.dateutil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -64,21 +68,20 @@ public class TimeStampUtil {
         return String.valueOf(l);
     }
 
+    /**
+     * @Author: old_yogurt
+     * @Description:
+     * @Param: [args]
+     * @return: void
+     */
 
-    public static void main(String[] args) {
-        //方法 一
-        long method1 = System.currentTimeMillis();
-        //方法 二
-        long method2 = Calendar.getInstance().getTimeInMillis();
-        //方法 三
-        long method3 = new Date().getTime();
+    public static void LocalTimeTest(){
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now);
 
-        System.out.println(method1);
-        System.out.println(method2);
-        System.out.println(method3);
-
-        System.out.println("将时间戳转换为时间:"+timeStampToDate("15012445555"));
-        System.out.println("将时间戳转换为时间:"+dateTimeToStamp("1970-06-24 02:07:25"));
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate);
     }
+
 
 }
