@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -78,7 +79,7 @@ public class TimeStampUtil {
     public static void LocalTimeTest(){
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
-
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate);
     }
