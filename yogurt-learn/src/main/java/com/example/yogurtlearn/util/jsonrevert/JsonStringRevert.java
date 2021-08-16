@@ -72,6 +72,10 @@ public class JsonStringRevert {
 
 
     public static void main(String[] args) {
-        beanToArray();
+        jsonObjectToJsonString();
+
+
     }
+
+
 }
