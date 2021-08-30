@@ -84,5 +84,19 @@ public class TimeStampUtil {
         System.out.println(localDate);
     }
 
+    public static void main(String[] args) {
+
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime time = LocalDateTime.now();
+        String localTime = df.format(time);
+
+        LocalDateTime ldt = LocalDateTime.parse("2021-08-19 00:00:00",df);
+        System.out.println(ldt.getHour());
+        System.out.println("LocalDateTime转成String类型的时间："+localTime);
+        System.out.println("String类型的时间转成LocalDateTime："+ldt);
+    }
+
+
+
 
 }
